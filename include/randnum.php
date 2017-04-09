@@ -36,7 +36,7 @@
   //把验证码加到图片图片中去
   $color=imagecolorallocate($img,255,255,255);
   imagestring($img,5,5,5,$str,$color);
-  
+
   header("content-type:image/png");
   imagepng($img);
   imagedestroy($img);
