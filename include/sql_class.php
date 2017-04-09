@@ -25,13 +25,14 @@
     public function dbConnect()
     {
       $this->dbLink=@mysql_connect($this->dbServe,$this->dbUser,$this->dbPwd);
+      //var_dump($this->dbLink);
       if(!$this->dbLink)
       {
         $this->dbHalt('Cant connect to database');
       }
       if($this->dbBase=="")
         $this->dbBase=$this->dbDataBase;
-      if (!@mysql_select_db($this->dbDataBase,$this->dbLink))
+      if (!@mysql_select_db($this->dbBase,$this->dbLink))
         $this->dbHalt('Database not exit');
       mysql_query("SET NAMES 'gbk'");
     }
