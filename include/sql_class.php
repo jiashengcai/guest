@@ -25,7 +25,6 @@
     public function dbConnect()
     {
       $this->dbLink=@mysql_connect($this->dbServe,$this->dbUser,$this->dbPwd);
-      //var_dump($this->dbLink);
       if(!$this->dbLink)
       {
         $this->dbHalt('Cant connect to database');
