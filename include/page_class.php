@@ -39,12 +39,12 @@
         $this->pages++;
       }
 
-      $nPage=$_GET['page'];
-      if ($nPage!=null&&!preg_match('/^\d+$',$nPage))
-      {
-        echo "错误的参数类型";
-        return false;
-      }
+      @$nPage=$_GET['page'];
+//      if ($nPage!=null&&!preg_match('/^\d+$',$nPage))
+//      {
+//        echo "错误的参数类型";
+//        return false;
+//      }
       if (isset($nPage))
       {
         $this->page=intval($nPage);

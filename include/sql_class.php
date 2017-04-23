@@ -33,7 +33,7 @@
         $this->dbBase=$this->dbDataBase;
       if (!@mysql_select_db($this->dbBase,$this->dbLink))
         $this->dbHalt('Database not exit');
-      mysql_query("SET NAMES 'gbk'");
+      //mysql_query("SET NAMES 'gbk'");
     }
     /*
      * query查询
@@ -46,7 +46,7 @@
 
     public function fetchArray($result)
     {
-      return mysql_fetch_array($result);
+      return @mysql_fetch_array($result);
     }
 
     public function getRows($sql)
@@ -102,7 +102,7 @@
 
     public function freeResult($result)
     {
-      return mysql_free_result($result);
+      return @mysql_free_result($result);
     }
 
     public function dbClose()

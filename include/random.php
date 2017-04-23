@@ -18,7 +18,7 @@
    *imagecolorallocate()  设置颜色
    */
   $img=imagecreate($width,$height);//生成一张图片,背景颜色随机
- $time=4;
+  $time=4;   //生成随机数个数
   $arr1=range('0','9');
   $arr2=range('a','z');
   $arr3=range('A','Z');
@@ -32,22 +32,31 @@
   {
     $str.=$arr[$i];
   }
-  $_SESSION["randValid"]=$str;
+  $_SESSION["random"]=$str;//保存随机数
 
   /*
    * 设置干扰素条数，颜色
    */
-  for ($i=0;$i<$time*5;$i++)
+  for ($i=0;$i<$time;$i++)
   {
     $color=imagecolorallocate($img,rand(0,255),rand(0,255),rand(0,255));  //干扰素颜色
     imageline($img,rand(0,$width),rand(0,$height),rand(0,$width),rand(0,$height),$color);//生成线条
+  }
+
+  //随机雪花
+  for ($i=0;$i<10;$i++)
+  {
+    $randColor=imagecolorallocate($img,rand(0,255),rand(0,255),rand(0,255));
+    imagestring($img,1,rand(1,$width),rand(1,$height),'*',$randColor);
   }
   //把验证码加到图片图片中去
   $color=imagecolorallocate($img,255, 255, 255);
   imagestring($img,5,5,3,$str,$color);
 
+  //输出图片
   header("content-type:image/png");
   imagepng($img);
+  //销毁图片
   imagedestroy($img);
 
 
